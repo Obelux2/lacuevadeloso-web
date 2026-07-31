@@ -37,12 +37,14 @@ El sitio está **construido y publicado en GitHub Pages**, pero **todavía no es
 ## Pendientes priorizados
 
 1. **Validar el dominio** cuando propague, y activar HTTPS. Bloquea todo lo demás: hasta que resuelva, el sitio no existe para nadie.
-2. **Arreglar el responsive móvil de `Lista de Precios (Template)`** antes de armar el demo. El template es copia del de la amasandería y arrastra el mismo defecto: a 390 px los nombres de producto se truncan a una o dos letras. El demo se compartirá por WhatsApp, o sea que se abrirá en teléfono.
+2. **Limpiar el `seed_data` de `Lista de Precios (Template)`** antes de armar el demo: todavía siembra la marca del negocio original, así que cada instalación nueva nace con el nombre equivocado adentro.
 3. **Armar el cliente demo** y enlazarlo desde el trabajo 03.
 4. Completar la captura del trabajo 04.
 5. Decidir sobre los precios públicos.
 
-> TODO: definir cuál repositorio es el origen del arreglo responsive (`Lista de Precios (Template)` o el de la amasandería), para no parchar en paralelo.
+El bug de responsive móvil que bloqueaba el demo (nombres truncados a una letra a 390 px) **ya fue corregido** por Francisco el 2026-07-30, en el template y en el de la amasandería.
+
+> TODO: verificar el arreglo de forma independiente. La vista pública pide PIN, así que no se pudo capturar a 390 px para confirmarlo.
 
 ## Riesgos y decisiones abiertas
 

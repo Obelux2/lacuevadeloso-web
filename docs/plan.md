@@ -23,9 +23,10 @@ El sitio está **construido y publicado en GitHub Pages**, pero **todavía no es
 - ✅ Repositorio público y GitHub Pages activado
 - ✅ Nameservers cambiados en NIC Chile a Cloudflare
 - ✅ Zona DNS configurada: 4 registros A de Pages, `CNAME` de `www`, TXT de Search Console
-- 🔄 **Propagación de los nameservers** — la delegación anterior tenía TTL de 86400, así que puede tardar hasta 24 h
-- ⬜ Verificar que el sitio cargue en el dominio real, con imágenes y favicon
-- ⬜ Activar **Enforce HTTPS** (el botón aparece recién cuando GitHub emite el certificado)
+- ✅ **Propagación de los nameservers** — completada el 2026-07-30; ambos resolvers públicos ven Cloudflare y las 4 IPs de Pages
+- ✅ El sitio carga en el dominio real: `http://lacuevadeloso.cl` responde 200 con el contenido correcto, y los 5 assets (favicon + 4 imágenes) sirven bien
+- 🔄 **Certificado HTTPS** — GitHub aún no lo emite (`https_certificate: null` en la API). Hasta entonces el sitio solo va por HTTP y el navegador lo marca "No seguro": **no conviene compartir el enlace todavía**
+- ⬜ Activar **Enforce HTTPS** (el botón aparece recién cuando el certificado existe)
 - ⬜ Quitar `lacuevadeloso.cl` del proyecto de Vercel de la tienda, para no dejarlo colgando
 
 ### Fase 3 — Contenido pendiente ⬜

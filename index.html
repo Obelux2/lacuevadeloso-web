@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Cueva del Oso — Páginas web y automatizaciones para negocios chicos</title>
+<meta name="description" content="Francisco Velásquez hace páginas web y automatiza el trabajo repetitivo de negocios chicos en Chile. Precio cerrado antes de partir, sin depender de nadie después.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://lacuevadeloso.cl/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_CL">
+<meta property="og:site_name" content="La Cueva del Oso">
+<meta property="og:url" content="https://lacuevadeloso.cl/">
+<meta property="og:title" content="La Cueva del Oso — Páginas web y automatizaciones">
+<meta property="og:description" content="Hago páginas web para negocios chicos en Chile, y automatizo el trabajo repetitivo que hoy haces a mano. Precio cerrado antes de partir.">
+<meta property="og:image" content="https://lacuevadeloso.cl/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  /* ---------- Tokens ---------- */
+  :root{
+    --bg: #f8f4ed;
+    --bg-2: #efe6d6;
+    --ink: #1e1a0f;
+    --ink-muted: rgba(30,26,15,.70);
+    --accent: #3d6627;
+    --accent-contrast: #f8f4ed;
+    --line: #ddd0b5;
+    --line-soft: #c4af89;
+    --font-serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Times New Roman', serif;
+    --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --ease: cubic-bezier(.16,1,.3,1);
+
+    --sp-1: clamp(.5rem, .43rem + .3vw, .75rem);
+    --sp-2: clamp(.85rem, .65rem + .7vw, 1.4rem);
+    --sp-3: clamp(1.4rem, 1rem + 1.6vw, 2.4rem);
+    --sp-4: clamp(2.2rem, 1.5rem + 2.8vw, 4rem);
+    --sp-5: clamp(3.2rem, 2rem + 4.8vw, 6.5rem);
+    --sp-6: clamp(4.5rem, 2.5rem + 8vw, 9.5rem);
+
+    --fs-h1: clamp(2.4rem, 1.55rem + 3.6vw, 4.6rem);
+    --fs-h2: clamp(1.7rem, 1.35rem + 1.6vw, 2.75rem);
+    --fs-h3: clamp(1.2rem, 1.05rem + .6vw, 1.5rem);
+    --fs-lead: clamp(1.1rem, .98rem + .5vw, 1.35rem);
+    --fs-body: clamp(1rem, .95rem + .2vw, 1.1rem);
+    --fs-small: .85rem;
+    --measure: 62ch;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg: #1e1a0f;
+      --bg-2: #231d12;
+      --ink: #f8f4ed;
+      --ink-muted: rgba(248,244,237,.70);
+      --accent: #84b471;
+      --accent-contrast: #1e1a0f;
+      --line: #322a1c;
+      --line-soft: rgba(248,244,237,.22);
+    }
+    nav.site-nav a:hover{ border-bottom-color: #aed19c; }
+  }
+
+  /* ---------- Reset ---------- */
+  *,*::before,*::after{ box-sizing: border-box; }
+  html{ -webkit-text-size-adjust: 100%; }
+  body{
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: var(--fs-body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  img,svg{ display:block; max-width:100%; }
+  a{ color: inherit; }
+  ul,ol{ padding: 0; margin: 0; list-style: none; }
+  h1,h2,h3,p{ margin: 0; }
+  section{ position: relative; }
+
+  .skip-link{
+    position: absolute; left: -999px; top: 0;
+    background: var(--ink); color: var(--bg);
+    padding: .75em 1.2em; z-index: 1000;
+  }
+  .skip-link:focus{ left: var(--sp-2); top: var(--sp-2); }
+
+  :focus-visible{
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  /* ---------- Grain overlay ---------- */
+  .grain{
+    position: fixed; inset: 0; z-index: 999;
+    pointer-events: none;
+    opacity: .045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+  @media (prefers-color-scheme: dark){
+    .grain{ mix-blend-mode: screen; }
+  }
+
+  /* ---------- Layout helpers ---------- */
+  .wrap{
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 1rem + 2vw, 3rem);
+  }
+  .rule{ border: none; border-top: 1px solid var(--line); margin: 0; }
+  .eyebrow{
+    display: block;
+    font-family: var(--font-serif);
+    font-size: var(--fs-small);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: var(--sp-1);
+  }
+  .lede{
+    font-size: var(--fs-lead);
+    max-width: var(--measure);
+    color: var(--ink-muted);
+  }
+
+  /* ---------- Header ---------- */
+  header.site{
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+    position: relative;
+    z-index: 10;
+  }
+  .site-bar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-2);
+    padding-block: var(--sp-2);
+  }
+  .brand{
+    display: flex;
+    align-items: center;
+    gap: .65em;
+    text-decoration: none;
+    color: var(--ink);
+    min-height: 44px;
+  }
+  .brand-mark{ width: 42px; height: 42px; flex: none; color: var(--ink); }
+  .brand-name{
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: .01em;
+  }
+  nav.site-nav ul{ display: flex; gap: var(--sp-3); }
+  nav.site-nav a{
+    text-decoration: none;
+    font-size: var(--fs-small);
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    padding: .6em .2em;
+    border-bottom: 1px solid transparent;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  nav.site-nav a:hover{ border-bottom-color: #5d9448; }
+  @media (max-width: 480px){
+    .site-bar{ flex-wrap: wrap; row-gap: var(--sp-1); }
+    nav.site-nav ul{ gap: var(--sp-2); }
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: .85em 1.6em;
+    font-size: var(--fs-small);
+    letter-spacing: .03em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 1px solid var(--line);
+    transition: background-color .2s var(--ease), color .2s var(--ease), transform .2s var(--ease);
+  }
+  .btn-primary{
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-contrast);
+    font-weight: 700;
+  }
+  .btn-primary:hover{ transform: translateY(-2px); }
+  .btn-secondary{
+    background: transparent;
+    color: var(--ink);
+  }
+  .btn-secondary:hover{ background: var(--bg-2); }
+  .btn-row{ display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding-block: var(--sp-6) var(--sp-5); }
+  .hero h1{
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: var(--fs-h1);
+    line-height: 1.06;
+    letter-spacing: -.01em;
+    max-width: 18ch;
+  }
+  .hero .lede{ margin-top: var(--sp-3); }
+  .hero .btn-row{ margin-top: var(--sp-4); }
+
+  /* ---------- Section shell ---------- */
+  .section{ padding-block: var(--sp-5); border-top: 1px solid var(--line); }
+  .section-head{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--sp-2);
+    margin-bottom: var(--sp-4);
+  }
+  .section-head h2{
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: var(--fs-h2);
+  }
+  .bg-tint{ background: var(--bg-2); }
+
+  /* ---------- Principios ---------- */
+  .principios{ display: flex; flex-direction: column; }
+  .principio{
+    display: grid;
+    grid-template-columns: minmax(3.2rem, auto) 1fr;
+    gap: var(--sp-3);
+    padding-block: var(--sp-3);
+    border-top: 1px solid var(--line-soft);
+  }
+  .principio:first-child{ border-top: none; }
+  .principio-n{
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 1.5rem + 1vw, 2.6rem);
+    color: var(--accent);
+    line-height: 1;
+  }
+  .principio h3{
+    font-family: var(--font-serif);
+    font-size: var(--fs-h3);
+    margin-bottom: .35em;
+  }
+  .principio p{ color: var(--ink-muted); max-width: var(--measure); }
+
+  /* ---------- Servicios ---------- */
+  .servicios{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-5);
+  }
+  .servicio-bloque{ padding-top: var(--sp-1); }
+  .servicio-bloque .eyebrow{ margin-bottom: var(--sp-2); }
+  .servicio-bloque h3{
+    font-family: var(--font-serif);
+    font-size: var(--fs-h3);
+    margin-bottom: var(--sp-2);
+  }
+  .servicio-bloque ul{ display: flex; flex-direction: column; }
+  .servicio-bloque li{
+    padding-block: var(--sp-1);
+    border-top: 1px solid var(--line-soft);
+    color: var(--ink-muted);
+  }
+  .servicio-bloque li:first-child{ border-top: none; }
+  @media (min-width: 860px){
+    .servicios{ grid-template-columns: 1fr 1px 1fr; }
+    .servicios .divider{ background: var(--line); }
+  }
+
+  /* ---------- Trabajos ---------- */
+  .work-list{ display: flex; flex-direction: column; }
+  .work-item{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-2);
+    padding-block: var(--sp-4);
+    border-top: 1px solid var(--line);
+  }
+  .work-item:first-child{ border-top: none; }
+  .work-head{
+    display: flex;
+    align-items: baseline;
+    gap: var(--sp-2);
+    flex-wrap: wrap;
+  }
+  .work-num{
+    font-family: var(--font-serif);
+    color: var(--ink-muted);
+    font-size: var(--fs-small);
+  }
+  .work-item h3{
+    font-family: var(--font-serif);
+    font-size: var(--fs-h3);
+  }
+  .work-tag{
+    font-size: var(--fs-small);
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    padding: .2em .6em;
+  }
+  .work-item p{ color: var(--ink-muted); max-width: var(--measure); }
+  .work-pattern{
+    height: clamp(5rem, 4rem + 5vw, 9rem);
+    border: 1px solid var(--line);
+    background-repeat: repeat;
+  }
+  .work-pattern--a{ background-image: repeating-linear-gradient(45deg, var(--line-soft) 0 2px, transparent 2px 14px); }
+  .work-pattern--b{ background-image: repeating-linear-gradient(0deg, var(--line-soft) 0 1px, transparent 1px 12px), repeating-linear-gradient(90deg, var(--line-soft) 0 1px, transparent 1px 12px); }
+  .work-pattern--c{ background-image: radial-gradient(circle, var(--line-soft) 1.5px, transparent 1.6px); background-size: 16px 16px; }
+  .work-pattern--d{ background-image: repeating-linear-gradient(-45deg, var(--line-soft) 0 2px, transparent 2px 10px); }
+  .work-shot{
+    display: block;
+    width: 100%;
+    height: clamp(5rem, 4rem + 5vw, 9rem);
+    object-fit: cover;
+    object-position: top center;
+    border: 1px solid var(--line);
+    filter: saturate(.9);
+  }
+  .work-shot-link{ display: block; }
+  @media (min-width: 700px){
+    .work-item{ grid-template-columns: 1.4fr 1fr; align-items: start; }
+    .work-item:nth-child(even) .work-pattern,
+    .work-item:nth-child(even) .work-shot,
+    .work-item:nth-child(even) .work-shot-link{ order: -1; }
+  }
+
+  /* ---------- Cómo trabajo ---------- */
+  .pasos{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-3);
+  }
+  .paso{ padding-top: var(--sp-2); border-top: 1px solid var(--line); }
+  .paso-n{
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 1.3rem + 1vw, 2.2rem);
+    color: var(--accent);
+    display: block;
+    margin-bottom: .3em;
+  }
+  .paso p{ color: var(--ink-muted); }
+  @media (min-width: 780px){
+    .pasos{ grid-template-columns: repeat(4, 1fr); }
+  }
+
+  /* ---------- Cómo cobro ---------- */
+  .cobro{ max-width: var(--measure); }
+  .cobro p + p{ margin-top: 1em; }
+  .cobro p{ color: var(--ink-muted); }
+
+  /* ---------- Contacto ---------- */
+  .contacto-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--sp-4);
+    align-items: start;
+  }
+  .contacto-links{ display: flex; flex-direction: column; gap: var(--sp-2); }
+  .contacto-link{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-2);
+    text-decoration: none;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: var(--sp-2);
+    min-height: 44px;
+  }
+  .contacto-link:hover{ background: var(--bg-2); }
+  .contacto-link strong{ font-family: var(--font-serif); font-size: var(--fs-h3); font-weight: 700; }
+  .contacto-link span.detalle{ color: var(--ink-muted); font-size: var(--fs-small); }
+  .cierre{
+    font-family: var(--font-serif);
+    font-size: var(--fs-h3);
+    max-width: 22ch;
+  }
+  @media (min-width: 780px){
+    .contacto-grid{ grid-template-columns: 1fr 1fr; }
+  }
+
+  /* ---------- Footer ---------- */
+  footer.site{
+    border-top: 1px solid var(--line);
+    padding-block: var(--sp-3);
+  }
+  footer.site .wrap{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--sp-1);
+    font-size: var(--fs-small);
+    color: var(--ink-muted);
+  }
+
+  /* ---------- Reveal (progressive enhancement) ---------- */
+  .reveal{ opacity: 1; transform: none; transition: opacity .6s var(--ease), transform .6s var(--ease); }
+  .reveal.is-hidden{ opacity: 0; transform: translateY(16px); }
+  @media (prefers-reduced-motion: reduce){
+    .reveal, .reveal.is-hidden{ opacity: 1; transform: none; transition: none; }
+  }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+<header class="site">
+  <div class="wrap site-bar">
+    <a class="brand" href="/" aria-label="La Cueva del Oso, inicio">
+      <svg class="brand-mark" viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="47" fill="none" stroke="currentColor" stroke-width="2"/>
+        <mask id="bearMask">
+          <rect x="0" y="0" width="100" height="100" fill="black"/>
+          <circle cx="33" cy="31" r="8.5" fill="white"/>
+          <circle cx="67" cy="31" r="8.5" fill="white"/>
+          <circle cx="50" cy="58" r="25" fill="white"/>
+          <ellipse cx="50" cy="66" rx="13" ry="10" fill="black"/>
+          <circle cx="42" cy="54" r="2.4" fill="black"/>
+          <circle cx="58" cy="54" r="2.4" fill="black"/>
+        </mask>
+        <rect x="0" y="0" width="100" height="100" fill="currentColor" mask="url(#bearMask)"/>
+        <path d="M50,60 L44.5,66.5 Q50,70 55.5,66.5 Z" fill="currentColor"/>
+      </svg>
+      <span class="brand-name">La Cueva del Oso</span>
+    </a>
+    <nav class="site-nav" aria-label="Principal">
+      <ul>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#trabajos">Trabajos</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+
+  <section class="hero wrap">
+    <h1>Tu negocio ya funciona. Falta que se note — y que deje de comerte el día.</h1>
+    <p class="lede">Hago páginas web para negocios chicos en Chile, y automatizo el trabajo repetitivo que hoy haces a mano.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="#contacto">Cuéntame qué necesitas</a>
+      <a class="btn btn-secondary" href="#trabajos">Ver trabajos</a>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="wrap">
+      <span class="eyebrow">Cómo pienso esto</span>
+      <div class="principios">
+        <div class="principio">
+          <span class="principio-n" aria-hidden="true">01</span>
+          <div>
+            <h3>No te vendo lo que no necesitas.</h3>
+            <p>Si tu tienda ya funciona, no te cambio de plataforma. Cambio la ropa, no la casa.</p>
+          </div>
+        </div>
+        <div class="principio">
+          <span class="principio-n" aria-hidden="true">02</span>
+          <div>
+            <h3>Precio cerrado antes de partir.</h3>
+            <p>Sabes cuánto cuesta y hasta dónde llega antes de la primera línea de código.</p>
+          </div>
+        </div>
+        <div class="principio">
+          <span class="principio-n" aria-hidden="true">03</span>
+          <div>
+            <h3>Te queda a ti.</h3>
+            <p>Cuando termino, puedes cambiar textos y fotos sin depender de mí.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicios" class="section bg-tint reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Qué hago</h2>
+      </div>
+      <div class="servicios">
+        <div class="servicio-bloque">
+          <span class="eyebrow">Uno</span>
+          <h3>Páginas y tiendas</h3>
+          <ul>
+            <li>Sitio nuevo desde cero.</li>
+            <li>Rediseño sobre lo que ya tienes.</li>
+            <li>Tiendas online (Jumpseller, Shopify).</li>
+            <li>Catálogos de precios que se actualizan solos.</li>
+          </ul>
+        </div>
+        <div class="divider" aria-hidden="true"></div>
+        <div class="servicio-bloque">
+          <span class="eyebrow">Dos</span>
+          <h3>Que el negocio se atienda solo</h3>
+          <ul>
+            <li>Un agente de voz que contesta el teléfono, responde dudas y agenda hora.</li>
+            <li>Presupuestos que se arman solos.</li>
+            <li>Listas de precios que se recalculan cuando sube un insumo.</li>
+            <li>Pedidos que llegan por WhatsApp y caen ordenados en una planilla o en tu CRM.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="trabajos" class="section reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Trabajos</h2>
+      </div>
+      <ol class="work-list">
+        <li class="work-item">
+          <a class="work-shot-link" href="https://costeador3d-production.up.railway.app/calculadora" target="_blank" rel="noopener">
+            <img class="work-shot" src="img/costeador3d.jpg" width="1568" height="699" loading="lazy" decoding="async"
+                 alt="Calculadora de Costeador 3D mostrando el costo de producción desglosado en material, electricidad y desgaste de máquina.">
+          </a>
+          <div class="work-info">
+            <div class="work-head">
+              <span class="work-num">01</span>
+              <h3>Costeador 3D</h3>
+              <span class="work-tag">Proyecto propio</span>
+            </div>
+            <p>Calcula el costo real de una impresión 3D: filamento, luz, horas de máquina, merma.</p>
+          </div>
+        </li>
+        <li class="work-item">
+          <a class="work-shot-link" href="https://lacuevadeloso3d.cl" target="_blank" rel="noopener">
+            <img class="work-shot" src="img/tienda3d.jpg" width="1568" height="744" loading="lazy" decoding="async"
+                 alt="Página de inicio de la tienda online La Cueva del Oso 3D con catálogo de piezas impresas en 3D.">
+          </a>
+          <div class="work-info">
+            <div class="work-head">
+              <span class="work-num">02</span>
+              <h3>Tienda La Cueva del Oso 3D</h3>
+              <span class="work-tag">Proyecto propio</span>
+            </div>
+            <p>Catálogo, carro y panel de administración. En producción, con dominio propio — la hice y la opero yo.</p>
+          </div>
+        </li>
+        <li class="work-item">
+          <div class="work-pattern work-pattern--b" aria-hidden="true"></div>
+          <!-- PLACEHOLDER: reemplazar por captura real -->
+          <div class="work-info">
+            <div class="work-head">
+              <span class="work-num">03</span>
+              <h3>Lista de precios de panadería</h3>
+            </div>
+            <p>Sube la harina y toda la lista se recalcula sola.</p>
+          </div>
+        </li>
+        <li class="work-item">
+          <div class="work-pattern work-pattern--d" aria-hidden="true"></div>
+          <!-- PLACEHOLDER: reemplazar por captura real -->
+          <div class="work-info">
+            <div class="work-head">
+              <span class="work-num">04</span>
+              <h3>Rediseño de tienda de esencias florales</h3>
+              <span class="work-tag">En curso</span>
+            </div>
+            <p>Cara nueva sin tocar cinco años de clientes, pedidos ni URLs.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section bg-tint reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Cómo trabajo</h2>
+      </div>
+      <div class="pasos">
+        <div class="paso">
+          <span class="paso-n" aria-hidden="true">01</span>
+          <p>Conversamos qué necesitas de verdad.</p>
+        </div>
+        <div class="paso">
+          <span class="paso-n" aria-hidden="true">02</span>
+          <p>Te paso un presupuesto cerrado.</p>
+        </div>
+        <div class="paso">
+          <span class="paso-n" aria-hidden="true">03</span>
+          <p>Lo construyo — días, no meses.</p>
+        </div>
+        <div class="paso">
+          <span class="paso-n" aria-hidden="true">04</span>
+          <p>Queda funcionando y queda tuyo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Cómo cobro</h2>
+      </div>
+      <div class="cobro">
+        <p>Presupuesto cerrado por proyecto, no por hora. Sin mensualidad obligatoria.</p>
+        <p>Si más adelante quieres que te mantenga el sitio o la automatización al día, es una opción aparte — nunca una letra chica.</p>
+        <!-- PLACEHOLDER: rangos de precio -->
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" class="section bg-tint reveal">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Contacto</h2>
+      </div>
+      <div class="contacto-grid">
+        <div class="contacto-links">
+          <a class="contacto-link" href="mailto:francisco.velasquezf@gmail.com" aria-label="Enviar correo a Francisco Velásquez">
+            <strong>Correo</strong>
+            <span class="detalle">francisco.velasquezf@gmail.com</span>
+          </a>
+          <a class="contacto-link" href="https://wa.me/56995087901?text=Hola%20Francisco%2C%20te%20escribo%20desde%20lacuevadeloso.cl" aria-label="Escribir por WhatsApp a Francisco Velásquez">
+            <strong>WhatsApp</strong>
+            <span class="detalle">+56 9 9508 7901</span>
+          </a>
+        </div>
+        <p class="cierre">Escríbeme y te digo derecho si te puedo ayudar o no.</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>La Cueva del Oso — Francisco Velásquez · Chile</span>
+    <span>2026</span>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    "use strict";
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (!('IntersectionObserver' in window)) return;
+
+    var items = document.querySelectorAll('.reveal');
+    items.forEach(function(el){ el.classList.add('is-hidden'); });
+
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting){
+          entry.target.classList.remove('is-hidden');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+    items.forEach(function(el){ io.observe(el); });
+  })();
+</script>
+</body>
+</html>

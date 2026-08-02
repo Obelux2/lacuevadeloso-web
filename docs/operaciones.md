@@ -76,7 +76,7 @@ gh api repos/Obelux2/lacuevadeloso-web/pages --jq '.status'          # "built" c
 gh api repos/Obelux2/lacuevadeloso-web/pages/builds/latest --jq '{status,error:.error.message}'
 ```
 
-> Mientras el `CNAME` esté puesto, `obelux2.github.io/lacuevadeloso-web` **redirige al dominio propio**. Es lo esperado, no un error: hasta que el DNS resuelva, el sitio no se puede visitar por la URL de github.io.
+> Mientras el `CNAME` esté puesto, `obelux2.github.io/lacuevadeloso-web` **redirige al dominio propio**. Es lo esperado, no un error.
 
 ## DNS y dominio
 
@@ -102,6 +102,7 @@ El registro `_domainconnect` que Cloudflare crea solo no afecta al sitio: no sir
 | El dominio muestra el sitio anterior | Los nameservers no han propagado | `nslookup -type=NS lacuevadeloso.cl 8.8.8.8`. Si aún salen los antiguos, esperar: la delegación previa tenía TTL de 86400 |
 | Error de certificado en el dominio | Proxy de Cloudflare activo (nube naranja) | Ponerlo en "DNS only" y esperar a que GitHub reemita |
 | No aparece "Enforce HTTPS" en Settings → Pages | El certificado aún no se emite | Esperar; puede tardar hasta 24 h desde que el DNS resuelve |
+| El certificado no sale tras >24 h con DNS correcto | La emisión quedó atascada en GitHub (pasó el 2026-08: 2.5 días sirviendo `*.github.io`) | Re-agregar el dominio custom para retriggerar: `echo '{"cname":null}' \| gh api -X PUT repos/Obelux2/lacuevadeloso-web/pages --input -`, luego lo mismo con `"cname":"lacuevadeloso.cl"`. El cert salió en <1 h. Después activar Enforce: `echo '{"https_enforced":true}' \| gh api -X PUT …/pages --input -` |
 | Un cambio no se ve en producción | Build sin terminar, o caché | Consultar el estado con `gh api …/pages`; recargar forzado |
 | Un cambio no se ve en local | Caché del servidor de pruebas | Agregar `?v=N` a la URL |
 | Una imagen no carga | Ruta o archivo no versionado | `git ls-files img/` — si no aparece, revisar `.gitignore` |

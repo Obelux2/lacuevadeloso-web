@@ -1,12 +1,12 @@
 # Plan
 
-## Estado actual (2026-07-30)
+## Estado actual (2026-08-02)
 
-El sitio está **construido y publicado en GitHub Pages**, pero **todavía no es visitable**: el `CNAME` apunta a `lacuevadeloso.cl` y ese dominio aún resuelve al sitio anterior mientras propagan los nameservers.
+El sitio está **publicado y visitable con HTTPS completo**: `https://lacuevadeloso.cl` responde 200 con certificado propio, HTTP redirige 301 a HTTPS y `www` redirige al apex. Ya se puede compartir el enlace.
 
-- Repositorio: `Obelux2/lacuevadeloso-web` (público, 3 commits)
-- Pages: rama `main`, raíz, build en estado `built` sin errores
-- DNS: nameservers ya cambiados en NIC Chile a Cloudflare; zona verificada contra el nameserver autoritativo
+- Repositorio: `Obelux2/lacuevadeloso-web` (público, Pages desde `main`, raíz)
+- DNS: NIC Chile delega a Cloudflare; zona en "DNS only" apuntando a GitHub Pages
+- Certificado: emitido por Let's Encrypt el 2026-08-02, con **Enforce HTTPS** activado
 
 ## Roadmap
 
@@ -25,8 +25,8 @@ El sitio está **construido y publicado en GitHub Pages**, pero **todavía no es
 - ✅ Zona DNS configurada: 4 registros A de Pages, `CNAME` de `www`, TXT de Search Console
 - ✅ **Propagación de los nameservers** — completada el 2026-07-30; ambos resolvers públicos ven Cloudflare y las 4 IPs de Pages
 - ✅ El sitio carga en el dominio real: `http://lacuevadeloso.cl` responde 200 con el contenido correcto, y los 5 assets (favicon + 4 imágenes) sirven bien
-- 🔄 **Certificado HTTPS** — GitHub aún no lo emite (`https_certificate: null` en la API). Hasta entonces el sitio solo va por HTTP y el navegador lo marca "No seguro": **no conviene compartir el enlace todavía**
-- ⬜ Activar **Enforce HTTPS** (el botón aparece recién cuando el certificado existe)
+- ✅ **Certificado HTTPS** — emitido el 2026-08-02. Estuvo 2.5 días atascado; se destrabó quitando y re-agregando el dominio custom (ver runbook en [Operaciones](operaciones.md))
+- ✅ **Enforce HTTPS** activado: HTTP redirige 301 a HTTPS
 - ⬜ Quitar `lacuevadeloso.cl` del proyecto de Vercel de la tienda, para no dejarlo colgando
 
 ### Fase 3 — Contenido pendiente ⬜
@@ -37,11 +37,11 @@ El sitio está **construido y publicado en GitHub Pages**, pero **todavía no es
 
 ## Pendientes priorizados
 
-1. **Validar el dominio** cuando propague, y activar HTTPS. Bloquea todo lo demás: hasta que resuelva, el sitio no existe para nadie.
-2. **Limpiar el `seed_data` de `Lista de Precios (Template)`** antes de armar el demo: todavía siembra la marca del negocio original, así que cada instalación nueva nace con el nombre equivocado adentro.
-3. **Armar el cliente demo** y enlazarlo desde el trabajo 03.
-4. Completar la captura del trabajo 04.
-5. Decidir sobre los precios públicos.
+1. **Limpiar el `seed_data` de `Lista de Precios (Template)`** antes de armar el demo: todavía siembra la marca del negocio original, así que cada instalación nueva nace con el nombre equivocado adentro.
+2. **Armar el cliente demo** y enlazarlo desde el trabajo 03.
+3. Completar la captura del trabajo 04.
+4. Decidir sobre los precios públicos.
+5. Quitar `lacuevadeloso.cl` del proyecto de Vercel de la tienda.
 
 El bug de responsive móvil que bloqueaba el demo (nombres truncados a una letra a 390 px) **ya fue corregido** por Francisco el 2026-07-30, en el template y en el de la amasandería.
 

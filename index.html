@@ -170,6 +170,19 @@
       radial-gradient(45% 40% at 20% 0%, rgba(237,237,243,.05), transparent 60%);
     pointer-events: none;
   }
+  .hero-sello{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: auto;
+    opacity: .08;
+    pointer-events: none;
+    user-select: none;
+  }
+  @media (max-width: 720px){
+    .hero-sello{ height: auto; width: min(240px, 62vw); right: 8px; opacity: .06; }
+  }
   .hero .wrap{ position: relative; }
   .hero h1{
     font-size: var(--fs-display);
@@ -350,6 +363,7 @@
 
   <section class="hero">
     <div class="wrap">
+      <img class="hero-sello" src="brand/logo-avatar-512.png" alt="" aria-hidden="true" decoding="async">
       <h1>Tu negocio ya funciona. Falta que se note — y que deje de comerte el día.</h1>
       <p class="lede">Hago páginas web para negocios chicos en Chile, y automatizo el trabajo repetitivo que hoy haces a mano.</p>
       <div class="btn-row">

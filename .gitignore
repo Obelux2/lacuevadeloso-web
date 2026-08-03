@@ -1,1 +1,7 @@
 capturas/
+
+# La forja (Forge factory OS) — solo local, no se publica en Pages
+.claude/
+.forge/
+CLAUDE.md
+example.mcp.json

@@ -22,33 +22,12 @@ python -m http.server 8777
 
 Y entrar a <http://localhost:8777>. El servidor cachea: si un cambio no aparece, agregar un parámetro a la URL (`?v=2`) o recargar forzado.
 
-**Revisar el modo claro:** el navegador sigue el tema del sistema. Para forzar el claro sin cambiar el sistema, se genera una copia sin el bloque de modo oscuro:
-
-```bash
-python -c "
-s=open('index.html',encoding='utf-8').read()
-out=s
-while True:
-    i=out.find('@media (prefers-color-scheme: dark)')
-    if i<0: break
-    j=out.index('{',i); d=0; k=j
-    while True:
-        if out[k]=='{': d+=1
-        elif out[k]=='}': d-=1
-        if d==0: break
-        k+=1
-    out=out[:i]+out[k+1:]
-open('_light.html','w',encoding='utf-8').write(out)
-"
-```
-
-Se abre `_light.html` y **se borra al terminar** — es temporal, no debe llegar a git.
+*(El sitio tiene un solo tema oscuro desde el rediseño Mercury; ya no hay modo claro que revisar por separado.)*
 
 ## Tests y CI
 
 No hay suite de tests ni pipeline: no hay lógica que probar. La verificación es manual, en el navegador, y debe cubrir:
 
-- Ambos temas, claro y oscuro
 - Anchos de móvil, tablet y escritorio, sin desplazamiento horizontal
 - Que todas las imágenes carguen
 - Que los enlaces internos apunten a un `id` existente
@@ -69,12 +48,15 @@ git commit -m "…"
 git push origin main
 ```
 
-El build tarda un par de minutos. Para verificar sin abrir el navegador:
+El build tarda ~1 minuto. Para verificar sin abrir el navegador, **la fuente confiable es el workflow de Actions**, no la API antigua de builds:
 
 ```bash
-gh api repos/Obelux2/lacuevadeloso-web/pages --jq '.status'          # "built" cuando terminó
-gh api repos/Obelux2/lacuevadeloso-web/pages/builds/latest --jq '{status,error:.error.message}'
+gh run list --repo Obelux2/lacuevadeloso-web --limit 3   # workflow "pages build and deployment"
 ```
+
+Después, confirmar el contenido con un fetch al dominio buscando un texto que solo exista en la versión nueva.
+
+> ⚠️ `gh api …/pages/builds/latest` **queda rezagado**: el 2026-08-03 siguió reportando el commit anterior como "built" después de que Actions ya había desplegado el nuevo. No usarlo como señal de deploy.
 
 > Mientras el `CNAME` esté puesto, `obelux2.github.io/lacuevadeloso-web` **redirige al dominio propio**. Es lo esperado, no un error.
 
@@ -103,7 +85,7 @@ El registro `_domainconnect` que Cloudflare crea solo no afecta al sitio: no sir
 | Error de certificado en el dominio | Proxy de Cloudflare activo (nube naranja) | Ponerlo en "DNS only" y esperar a que GitHub reemita |
 | No aparece "Enforce HTTPS" en Settings → Pages | El certificado aún no se emite | Esperar; puede tardar hasta 24 h desde que el DNS resuelve |
 | El certificado no sale tras >24 h con DNS correcto | La emisión quedó atascada en GitHub (pasó el 2026-08: 2.5 días sirviendo `*.github.io`) | Re-agregar el dominio custom para retriggerar: `echo '{"cname":null}' \| gh api -X PUT repos/Obelux2/lacuevadeloso-web/pages --input -`, luego lo mismo con `"cname":"lacuevadeloso.cl"`. El cert salió en <1 h. Después activar Enforce: `echo '{"https_enforced":true}' \| gh api -X PUT …/pages --input -` |
-| Un cambio no se ve en producción | Build sin terminar, o caché | Consultar el estado con `gh api …/pages`; recargar forzado |
+| Un cambio no se ve en producción | Build sin terminar, o caché | `gh run list` (workflow de Pages); recargar forzado. No fiarse de `pages/builds/latest` |
 | Un cambio no se ve en local | Caché del servidor de pruebas | Agregar `?v=N` a la URL |
 | Una imagen no carga | Ruta o archivo no versionado | `git ls-files img/` — si no aparece, revisar `.gitignore` |
 

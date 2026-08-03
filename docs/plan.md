@@ -1,8 +1,10 @@
 # Plan
 
-## Estado actual (2026-08-02)
+## Estado actual (2026-08-03)
 
 El sitio está **publicado y visitable con HTTPS completo**: `https://lacuevadeloso.cl` responde 200 con certificado propio, HTTP redirige 301 a HTTPS y `www` redirige al apex. Ya se puede compartir el enlace.
+
+Desde la publicación se sumaron: el **rediseño Mercury** (canvas oscuro, acento cobalto único, Inter), el **sello corporativo** elegido (oso en la cueva, en `brand/` y como fondo del hero), y un **afinado de copy** (2026-08-03) a partir de una revisión externa con Gemini: captura de la panadería contextualizada con su métrica real, bajada de "banco de pruebas" en Trabajos y agente de voz en términos cotidianos.
 
 - Repositorio: `Obelux2/lacuevadeloso-web` (público, Pages desde `main`, raíz)
 - DNS: NIC Chile delega a Cloudflare; zona en "DNS only" apuntando a GitHub Pages
@@ -13,8 +15,8 @@ El sitio está **publicado y visitable con HTTPS completo**: `https://lacuevadel
 ### Fase 1 — Construcción ✅
 - ✅ Nombre y posicionamiento definidos (webs primero, automatización como segundo acto)
 - ✅ Landing completa: hero, principios, servicios, trabajos, proceso, cobro, contacto
-- ✅ Identidad visual alineada con `lacuevadeloso3d.cl`
-- ✅ Contraste AA verificado en ambos modos
+- ✅ Identidad visual alineada con `lacuevadeloso3d.cl` *(superada por el rediseño Mercury)*
+- ✅ Contraste AA verificado (remedido tras el rediseño, ver [Diseño](diseno.md))
 - ✅ Marca (cabeza de oso) y favicon
 - ✅ Datos de contacto reales (WhatsApp y correo)
 - ✅ Metadatos Open Graph y canonical
@@ -29,7 +31,12 @@ El sitio está **publicado y visitable con HTTPS completo**: `https://lacuevadel
 - ✅ **Enforce HTTPS** activado: HTTP redirige 301 a HTTPS
 - ⬜ Quitar `lacuevadeloso.cl` del proyecto de Vercel de la tienda, para no dejarlo colgando
 
-### Fase 3 — Contenido pendiente ⬜
+### Fase 3 — Identidad y copy ✅
+- ✅ Rediseño Mercury completo (2026-08-02)
+- ✅ Sello corporativo elegido y aplicado (header, favicon, fondo del hero)
+- ✅ Copy afinada con revisión externa: contexto de la captura de panadería, banco de pruebas, agente de voz terrenal (2026-08-03)
+
+### Fase 4 — Contenido pendiente ⬜
 - ⬜ Captura del trabajo 04 (rediseño de tienda de esencias florales)
 - ⬜ Reemplazar la captura del trabajo 03 por una del **cliente demo** de `Lista de Precios (Template)`, con datos ficticios y **con enlace**
 - ⬜ Decidir si se publican rangos de precio en "Cómo cobro"

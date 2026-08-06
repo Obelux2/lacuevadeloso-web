@@ -138,6 +138,7 @@
   /* ---------- Botones (píldora) ---------- */
   .btn{
     display: inline-flex; align-items: center; justify-content: center;
+    gap: .5em;
     min-height: 48px;
     padding: .8em 1.6em;
     font-size: var(--fs-body);
@@ -146,6 +147,7 @@
     border-radius: var(--r-pill);
     transition: opacity .2s var(--ease), background-color .2s var(--ease), transform .2s var(--ease);
   }
+  .btn svg{ width: 1.2em; height: 1.2em; flex-shrink: 0; }
   .btn-primary{ background: var(--accent); color: var(--white); }
   .btn-primary:hover{ opacity: .9; transform: translateY(-1px); }
   .btn-ghost{
@@ -548,14 +550,16 @@
       </div>
       <div class="contacto-grid">
         <div class="contacto-links">
-          <a class="contacto-link" href="mailto:francisco.velasquez@lacuevadeloso.cl" aria-label="Enviar correo a Francisco Velásquez">
-            <strong>Correo</strong>
-            <span class="detalle">francisco.velasquez@lacuevadeloso.cl</span>
-          </a>
-          <a class="contacto-link" href="https://wa.me/56995087901?text=Hola%20Francisco%2C%20te%20escribo%20desde%20lacuevadeloso.cl" aria-label="Escribir por WhatsApp a Francisco Velásquez">
-            <strong>WhatsApp</strong>
-            <span class="detalle">+56 9 9508 7901</span>
-          </a>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="https://wa.me/56995087901?text=Hola%20Francisco%2C%20te%20escribo%20desde%20lacuevadeloso.cl" aria-label="Escribir por WhatsApp a Francisco Velásquez">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9" /><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1" /></svg>
+              WhatsApp
+            </a>
+            <a class="btn btn-ghost" href="mailto:francisco.velasquez@lacuevadeloso.cl" aria-label="Enviar correo a Francisco Velásquez">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" /><path d="M3 7l9 6l9 -6" /></svg>
+              Correo
+            </a>
+          </div>
           <a class="contacto-link" href="https://g.page/r/CRR6W3bzLoSgEAI/review" target="_blank" rel="noopener" aria-label="Dejar una reseña en Google">
             <strong>Reseñas</strong>
             <span class="detalle">Déjame una reseña en Google</span>

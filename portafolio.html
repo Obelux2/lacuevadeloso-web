@@ -178,7 +178,7 @@
 
   /* ---------- Trabajos ---------- */
   .work-list{ display: grid; grid-template-columns: 1fr; gap: var(--sp-2); }
-  .work-item{ display: flex; flex-direction: column; gap: var(--sp-2); overflow: hidden; }
+  .work-item{ display: flex; flex-direction: column; gap: var(--sp-2); overflow: hidden; scroll-margin-top: 5.5rem; }
   .work-shot-link{ display: block; }
   .work-card-link{
     display: flex; flex-direction: column; gap: var(--sp-2);
@@ -267,7 +267,7 @@
   <section class="section reveal" style="padding-top:0">
     <div class="wrap">
       <ol class="work-list">
-        <li class="work-item card">
+        <li id="costeador-3d" class="work-item card">
           <a class="work-card-link" href="https://costeador3d-production.up.railway.app/calculadora" target="_blank" rel="noopener">
             <img class="work-shot" src="img/costeador3d.jpg" width="1568" height="699" loading="lazy" decoding="async"
                  alt="Calculadora de Costeador 3D mostrando el costo de producción desglosado en material, electricidad y desgaste de máquina.">
@@ -281,7 +281,7 @@
             </div>
           </a>
         </li>
-        <li class="work-item card">
+        <li id="lista-de-precios" class="work-item card">
           <a class="work-card-link" href="proyectos/lista-de-precios.html">
             <img class="work-shot" src="img/proyectos/lista-de-precios/kiosco-lista-completa.jpg" width="1568" height="699" loading="lazy" decoding="async"
                  alt="Kiosco público del template Lista de Precios: buscador y listado de 751 productos con precio y disponibilidad.">
@@ -295,18 +295,21 @@
             </div>
           </a>
         </li>
-        <li class="work-item card">
-          <div class="work-pattern" aria-hidden="true"></div>
-          <div class="work-info">
-            <div class="work-head">
-              <span class="work-num">03</span>
-              <h3>La Consulta de la Sofi</h3>
-              <span class="work-tag">En curso</span>
+        <li id="la-consulta-de-la-sofi" class="work-item card">
+          <a class="work-card-link" href="proyectos/la-consulta-de-la-sofi.html">
+            <img class="work-shot" src="img/proyectos/la-consulta-de-la-sofi/hero.jpg" width="1568" height="699" loading="lazy" decoding="async"
+                 alt="Página de inicio de La Consulta de la Sofi: educación emocional, terapia floral y sanación.">
+            <div class="work-info">
+              <div class="work-head">
+                <span class="work-num">03</span>
+                <h3>La Consulta de la Sofi</h3>
+                <span class="work-tag">Cliente real</span>
+              </div>
+              <p>Sitio para Sofía Vera, médico y sanadora: terapia floral con flores de Bach, sanación energética, y talleres y charlas sobre educación emocional.</p>
             </div>
-            <p>Sitio para Sofía Vera, terapeuta: sesiones de sanación energética, flores de Bach, y cursos y charlas sobre estos temas.</p>
-          </div>
+          </a>
         </li>
-        <li class="work-item card">
+        <li id="veterinaria-jessi" class="work-item card">
           <div class="work-pattern" aria-hidden="true"></div>
           <div class="work-info">
             <div class="work-head">
@@ -317,7 +320,7 @@
             <p>Sistema de gestión para una veterinaria. Capturas en camino, con los datos de clientes ofuscados.</p>
           </div>
         </li>
-        <li class="work-item card">
+        <li id="adaba" class="work-item card">
           <div class="work-pattern" aria-hidden="true"></div>
           <div class="work-info">
             <div class="work-head">
@@ -327,6 +330,20 @@
             </div>
             <p>Nuevo proyecto en camino.</p>
           </div>
+        </li>
+        <li id="tienda-3d" class="work-item card">
+          <a class="work-card-link" href="proyectos/tienda-3d.html">
+            <img class="work-shot" src="img/tienda3d.jpg" width="1568" height="744" loading="lazy" decoding="async"
+                 alt="Página de inicio de la tienda online La Cueva del Oso 3D con catálogo de piezas impresas en 3D.">
+            <div class="work-info">
+              <div class="work-head">
+                <span class="work-num">06</span>
+                <h3>Tienda La Cueva del Oso 3D</h3>
+                <span class="work-tag">Proyecto propio</span>
+              </div>
+              <p>Catálogo, carro y panel de administración. En producción, con dominio propio — la hice y la opero yo.</p>
+            </div>
+          </a>
         </li>
       </ol>
     </div>

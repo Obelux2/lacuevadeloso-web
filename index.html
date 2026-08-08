@@ -242,6 +242,10 @@
   .work-list{ display: grid; grid-template-columns: 1fr; gap: var(--sp-2); }
   .work-item{ display: flex; flex-direction: column; gap: var(--sp-2); overflow: hidden; }
   .work-shot-link{ display: block; }
+  .work-card-link{
+    display: flex; flex-direction: column; gap: var(--sp-2);
+    text-decoration: none; color: inherit;
+  }
   .work-shot{
     width: 100%;
     height: clamp(9rem, 7rem + 8vw, 14rem);
@@ -440,54 +444,60 @@
       </div>
       <ol class="work-list">
         <li class="work-item card">
-          <a class="work-shot-link" href="https://costeador3d-production.up.railway.app/calculadora" target="_blank" rel="noopener">
+          <a class="work-card-link" href="portafolio.html#costeador-3d">
             <img class="work-shot" src="img/costeador3d.jpg" width="1568" height="699" loading="lazy" decoding="async"
                  alt="Calculadora de Costeador 3D mostrando el costo de producción desglosado en material, electricidad y desgaste de máquina.">
-          </a>
-          <div class="work-info">
-            <div class="work-head">
-              <span class="work-num">01</span>
-              <h3>Costeador 3D</h3>
-              <span class="work-tag">Proyecto propio</span>
+            <div class="work-info">
+              <div class="work-head">
+                <span class="work-num">01</span>
+                <h3>Costeador 3D</h3>
+                <span class="work-tag">Proyecto propio</span>
+              </div>
+              <p>Calcula el costo real de una impresión 3D: filamento, luz, horas de máquina, merma.</p>
             </div>
-            <p>Calcula el costo real de una impresión 3D: filamento, luz, horas de máquina, merma.</p>
-          </div>
+          </a>
         </li>
         <li class="work-item card">
-          <a class="work-shot-link" href="https://lacuevadeloso3d.cl" target="_blank" rel="noopener">
+          <a class="work-card-link" href="proyectos/lista-de-precios.html">
+            <img class="work-shot" src="img/proyectos/lista-de-precios/kiosco-lista-completa.jpg" width="1568" height="699" loading="lazy" decoding="async"
+                 alt="Kiosco público del template Lista de Precios: buscador y listado de 751 productos con precio y disponibilidad.">
+            <div class="work-info">
+              <div class="work-head">
+                <span class="work-num">02</span>
+                <h3>Lista de Precios (Template)</h3>
+                <span class="work-tag">Demo pública</span>
+              </div>
+              <p>Lista real de una amasandería que también vende impresión 3D en tienda. Sube la harina y toda la lista se recalcula sola: actualizar precios pasó de ser una tarea de una vez al mes — vendiendo semanas a precio viejo — a 20 minutos al día con las facturas que van llegando.</p>
+            </div>
+          </a>
+        </li>
+        <li class="work-item card">
+          <a class="work-card-link" href="proyectos/la-consulta-de-la-sofi.html">
+            <img class="work-shot" src="img/proyectos/la-consulta-de-la-sofi/hero.jpg" width="1568" height="699" loading="lazy" decoding="async"
+                 alt="Página de inicio de La Consulta de la Sofi: educación emocional, terapia floral y sanación.">
+            <div class="work-info">
+              <div class="work-head">
+                <span class="work-num">03</span>
+                <h3>La Consulta de la Sofi</h3>
+                <span class="work-tag">Cliente real</span>
+              </div>
+              <p>Sitio para Sofía Vera, médico y sanadora: terapia floral con flores de Bach, sanación energética, y talleres y charlas sobre educación emocional.</p>
+            </div>
+          </a>
+        </li>
+        <li class="work-item card">
+          <a class="work-card-link" href="proyectos/tienda-3d.html">
             <img class="work-shot" src="img/tienda3d.jpg" width="1568" height="744" loading="lazy" decoding="async"
                  alt="Página de inicio de la tienda online La Cueva del Oso 3D con catálogo de piezas impresas en 3D.">
+            <div class="work-info">
+              <div class="work-head">
+                <span class="work-num">04</span>
+                <h3>Tienda La Cueva del Oso 3D</h3>
+                <span class="work-tag">Proyecto propio</span>
+              </div>
+              <p>Catálogo, carro y panel de administración. En producción, con dominio propio — la hice y la opero yo.</p>
+            </div>
           </a>
-          <div class="work-info">
-            <div class="work-head">
-              <span class="work-num">02</span>
-              <h3>Tienda La Cueva del Oso 3D</h3>
-              <span class="work-tag">Proyecto propio</span>
-            </div>
-            <p>Catálogo, carro y panel de administración. En producción, con dominio propio — la hice y la opero yo.</p>
-          </div>
-        </li>
-        <li class="work-item card">
-          <img class="work-shot" src="img/amasanderia-lista.jpg" width="1050" height="1400" loading="lazy" decoding="async"
-               alt="Lista de precios de la amasandería en una tablet: secciones Abarrotes, Pan y Pasteles e Impresión 3D, buscador y precios grandes por producto.">
-          <div class="work-info">
-            <div class="work-head">
-              <span class="work-num">03</span>
-              <h3>Lista de precios de panadería</h3>
-            </div>
-            <p>Lista real de una amasandería que también vende impresión 3D en tienda. Sube la harina y toda la lista se recalcula sola: actualizar precios pasó de ser una tarea de una vez al mes — vendiendo semanas a precio viejo — a 20 minutos al día con las facturas que van llegando.</p>
-          </div>
-        </li>
-        <li class="work-item card">
-          <div class="work-pattern" aria-hidden="true"></div>
-          <div class="work-info">
-            <div class="work-head">
-              <span class="work-num">04</span>
-              <h3>Rediseño de tienda de esencias florales</h3>
-              <span class="work-tag">En curso</span>
-            </div>
-            <p>Cara nueva sin tocar cinco años de clientes, pedidos ni URLs.</p>
-          </div>
         </li>
       </ol>
       <div class="trabajos-cta">

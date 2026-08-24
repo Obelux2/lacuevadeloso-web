@@ -149,6 +149,7 @@ nav.site-nav a:hover{ background: var(--button-2); color: var(--text); }
 .btn svg{ width: 1.2em; height: 1.2em; flex-shrink: 0; }
 .btn-primary{ background: var(--accent); color: var(--white); }
 .btn-primary:hover{ opacity: .9; transform: translateY(-1px); }
+.btn:active{ transform: scale(.98); }
 .btn-ghost{
   background: transparent;
   color: var(--text);
@@ -239,6 +240,7 @@ nav.site-nav a:hover{ background: var(--button-2); color: var(--text); }
 
 /* ---------- Trabajos ---------- */
 .work-list{ display: grid; grid-template-columns: 1fr; gap: var(--sp-2); }
+.work-item{ display: flex; flex-direction: column; gap: var(--sp-2); overflow: hidden; scroll-margin-top: 5.5rem; }
 .work-shot-link{ display: block; }
 .work-card-link{
   display: flex; flex-direction: column; gap: var(--sp-2);
@@ -336,6 +338,8 @@ footer.site .wrap{
   font-size: var(--fs-small);
   color: var(--text-muted);
 }
+footer.site a{ text-decoration: none; }
+footer.site a:hover{ color: var(--text); }
 
 /* ---------- Reveal ---------- */
 .reveal{ opacity: 1; transform: none; transition: opacity .6s var(--ease), transform .6s var(--ease); }

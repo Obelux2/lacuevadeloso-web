@@ -1,0 +1,23 @@
+# La Cueva del Oso
+
+> Francisco Velásquez hace páginas web y automatiza el trabajo repetitivo de pymes chilenas. Presupuesto cerrado por proyecto, sin mensualidad obligatoria, entrega en días.
+
+La Cueva del Oso es el estudio unipersonal de Francisco Velásquez, ex líder técnico con 18 años de experiencia en Falabella, Sodimac, Cencosud y Banco de Chile, hoy dedicado a construir sitios web y automatizaciones con IA para pymes chilenas.
+
+## Servicios
+- Páginas web nuevas, rediseños y tiendas online (Jumpseller, Shopify).
+- Catálogos de precios que se actualizan solos.
+- Agentes de IA que contestan consultas frecuentes y agendan hora.
+- Automatización de presupuestos, listas de precios y pedidos por WhatsApp.
+
+## Páginas
+- [Inicio](https://lacuevadeloso.cl/): servicios, forma de trabajo y contacto.
+- [Portafolio](https://lacuevadeloso.cl/portafolio.html): todos los proyectos realizados.
+- [Lista de Precios (Template)](https://lacuevadeloso.cl/proyectos/lista-de-precios.html): catálogo de precios que se recalcula solo, con IA que lee facturas.
+- [La Consulta de la Sofi](https://lacuevadeloso.cl/proyectos/la-consulta-de-la-sofi.html): sitio para una terapeuta floral y de sanación energética.
+- [Tienda La Cueva del Oso 3D](https://lacuevadeloso.cl/proyectos/tienda-3d.html): tienda online de piezas impresas en 3D.
+- [Veterinaria Jessi](https://lacuevadeloso.cl/proyectos/veterinaria-jessi.html): sistema de gestión clínica veterinaria.
+
+## Contacto
+- WhatsApp: +56 9 5714 1786
+- Correo: francisco.velasquez@lacuevadeloso.cl

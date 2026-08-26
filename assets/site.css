@@ -173,6 +173,11 @@ nav.site-nav a:hover{ background: var(--button-2); color: var(--text); }
     radial-gradient(45% 40% at 20% 0%, rgba(237,237,243,.05), transparent 60%);
   pointer-events: none;
 }
+@keyframes hero-glow-pulse{
+  0%,100%{ opacity: 1; transform: translateY(0) scale(1); }
+  50%{ opacity: .85; transform: translateY(2%) scale(1.03); }
+}
+.hero::before{ animation: hero-glow-pulse 14s var(--ease) infinite; }
 .hero-sello{
   position: absolute;
   top: 0;
@@ -206,6 +211,11 @@ nav.site-nav a:hover{ background: var(--button-2); color: var(--text); }
   background: var(--card);
   border-radius: var(--r-card);
   padding: var(--sp-3);
+  transition: transform .25s var(--ease), box-shadow .25s var(--ease);
+}
+.card:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 16px 28px -18px rgba(0,0,0,.45);
 }
 
 /* ---------- Principios ---------- */
@@ -241,6 +251,8 @@ nav.site-nav a:hover{ background: var(--button-2); color: var(--text); }
 /* ---------- Trabajos ---------- */
 .work-list{ display: grid; grid-template-columns: 1fr; gap: var(--sp-2); }
 .work-item{ display: flex; flex-direction: column; gap: var(--sp-2); overflow: hidden; scroll-margin-top: 5.5rem; }
+.work-shot, .work-pattern{ transition: transform .3s var(--ease); }
+.work-item:hover .work-shot, .work-item:hover .work-pattern{ transform: scale(1.03); }
 .work-shot-link{ display: block; }
 .work-card-link{
   display: flex; flex-direction: column; gap: var(--sp-2);
@@ -347,6 +359,11 @@ footer.site a:hover{ color: var(--text); }
 @media (prefers-reduced-motion: reduce){
   .reveal, .reveal.is-hidden{ opacity: 1; transform: none; transition: none; }
   html{ scroll-behavior: auto; }
+  .hero::before{ animation: none; }
+  .card{ transition: none; }
+  .card:hover{ transform: none; }
+  .work-shot, .work-pattern{ transition: none; }
+  .work-item:hover .work-shot, .work-item:hover .work-pattern{ transform: none; }
 }
 
 /* ---------- FAQ ---------- */

@@ -387,6 +387,14 @@
     if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     if (!('IntersectionObserver' in window)) return;
 
+    var grupos = document.querySelectorAll('.principios, .servicios, .work-list, .pasos');
+    grupos.forEach(function(g){
+      Array.prototype.forEach.call(g.children, function(child, i){
+        child.classList.add('reveal');
+        child.style.transitionDelay = (i * 80) + 'ms';
+      });
+    });
+
     var items = document.querySelectorAll('.reveal');
     items.forEach(function(el){ el.classList.add('is-hidden'); });
 

@@ -1,5 +1,5 @@
 /**
- * Motor del bot de La Cueva del Oso — Fase 1 (guiado, sin backend).
+ * Motor del bot de La Cueva del Oso, Fase 1 (guiado, sin backend).
  *
  * Carga flujo.js, inyecta su propio CSS (consumiendo las variables del
  * sitio con fallback) y arma el botón flotante + panel de chat.
@@ -36,7 +36,7 @@
     var script = document.createElement("script");
     script.src = RUTA_FLUJO;
     script.onload = listo;
-    // Si el guion no carga, el bot simplemente no aparece — sin errores visibles.
+    // Si el guion no carga, el bot simplemente no aparece, sin errores visibles.
     document.head.appendChild(script);
   }
 

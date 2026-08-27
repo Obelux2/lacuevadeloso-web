@@ -1,6 +1,6 @@
 /**
  * Validador del guion del bot. Corre con: node bot/test-flujo.js
- * Sin frameworks — solo assert y require. Ver docs/superpowers/specs/
+ * Sin frameworks: solo assert y require. Ver docs/superpowers/specs/
  * 2026-08-18-bot-sitio-design.md §8 para las reglas que verifica.
  */
 "use strict";
@@ -86,7 +86,7 @@ function main() {
   }
   validarAlcanzabilidad(nodos, porId, FLUJO.inicioId);
 
-  console.log(`OK — ${nodos.length} nodos, guion del bot valida correctamente.`);
+  console.log(`OK, ${nodos.length} nodos, guion del bot valida correctamente.`);
 }
 
 main();

@@ -1,5 +1,5 @@
 /**
- * Guion del bot de La Cueva del Oso — Fase 1 (guiado, sin backend).
+ * Guion del bot de La Cueva del Oso, Fase 1 (guiado, sin backend).
  *
  * Contenido puro: nodos, copy y opciones. Editable sin tocar bot.js.
  * Se carga tanto en el navegador (window.FLUJO_BOT) como en Node
@@ -22,7 +22,7 @@
       id: "inicio",
       mensaje: [
         "Hola 👋 Soy el asistente de La Cueva del Oso.",
-        "Y sí, soy un bot — de los que Francisco construye. Cuéntame qué te trae por acá.",
+        "Y sí, soy un bot, de los que Francisco construye. Cuéntame qué te trae por acá.",
       ],
       opciones: [
         { texto: "Quiero cotizar algo", siguiente: "necesidad" },
@@ -45,11 +45,11 @@
       id: "necesidad_auto",
       mensaje: ["Esa es mi parte favorita. ¿Cuál de estas se parece más a lo tuyo?"],
       opciones: [
-        { texto: "Que alguien conteste las consultas por mí", siguiente: "plazo", guarda: { campo: "necesidad", valor: "Automatización — atención de consultas" } },
-        { texto: "Que los presupuestos se armen solos", siguiente: "plazo", guarda: { campo: "necesidad", valor: "Automatización — presupuestos" } },
-        { texto: "Que la lista de precios se recalcule sola", siguiente: "plazo", guarda: { campo: "necesidad", valor: "Automatización — lista de precios" } },
-        { texto: "Que los pedidos de WhatsApp lleguen ordenados", siguiente: "plazo", guarda: { campo: "necesidad", valor: "Automatización — pedidos a planilla/CRM" } },
-        { texto: "Algo parecido, pero no exactamente", siguiente: "plazo", guarda: { campo: "necesidad", valor: "Automatización — por definir" } },
+        { texto: "Que alguien conteste las consultas por mí", siguiente: "plazo", guarda: { campo: "necesidad", valor: "Automatización: atención de consultas" } },
+        { texto: "Que los presupuestos se armen solos", siguiente: "plazo", guarda: { campo: "necesidad", valor: "Automatización: presupuestos" } },
+        { texto: "Que la lista de precios se recalcule sola", siguiente: "plazo", guarda: { campo: "necesidad", valor: "Automatización: lista de precios" } },
+        { texto: "Que los pedidos de WhatsApp lleguen ordenados", siguiente: "plazo", guarda: { campo: "necesidad", valor: "Automatización: pedidos a planilla/CRM" } },
+        { texto: "Algo parecido, pero no exactamente", siguiente: "plazo", guarda: { campo: "necesidad", valor: "Automatización: por definir" } },
       ],
     },
     {
@@ -84,7 +84,7 @@
       id: "cierre",
       mensaje: [
         "Listo. Con esto Francisco ya sabe de qué se trata antes de saludarte.",
-        "Aprieta abajo y le llega todo escrito — no tienes que repetir nada.",
+        "Aprieta abajo y le llega todo escrito, no tienes que repetir nada.",
       ],
       opciones: [{ texto: "Empezar de nuevo", siguiente: "inicio" }],
       final: true,
@@ -139,7 +139,7 @@
       id: "faq_mantencion",
       mensaje: [
         "Puedes mantenerlo tú, porque queda tuyo.",
-        "Si prefieres que Francisco se haga cargo, es un acuerdo aparte que decides después — nunca una condición para empezar.",
+        "Si prefieres que Francisco se haga cargo, es un acuerdo aparte que decides después, nunca una condición para empezar.",
       ],
       opciones: [
         { texto: "Otra duda", siguiente: "faq" },
@@ -150,7 +150,7 @@
       id: "faq_quien",
       mensaje: [
         "Le dicen Oso. Viene de una familia de panaderos y la amasandería de sus padres fue la primera pyme que digitalizó.",
-        "Antes de eso, 18 años construyendo sistemas para Falabella, Sodimac, Cencosud y Banco de Chile — la mayor parte como líder técnico.",
+        "Antes de eso, 18 años construyendo sistemas para Falabella, Sodimac, Cencosud y Banco de Chile, la mayor parte como líder técnico.",
         "Hoy esa experiencia trabaja para pymes que ya funcionan y merecen que se note.",
       ],
       opciones: [
@@ -162,7 +162,7 @@
       id: "faq_bot",
       mensaje: [
         "Sí, y de los baratos: no tengo servidor ni cobro por mensaje. Soy un guion bien escrito.",
-        "Justamente eso es lo que Francisco te vende — que tu negocio conteste solo, sin que pagues una fortuna por ello.",
+        "Justamente eso es lo que Francisco te vende: que tu negocio conteste solo, sin que pagues una fortuna por ello.",
         "Si esto te sirvió, imagina uno hecho a la medida de tu negocio.",
       ],
       opciones: [
@@ -174,7 +174,7 @@
       id: "mirando",
       mensaje: [
         "Dale, mira tranquilo. Si algo te hace sentido, acá estoy.",
-        "Los trabajos están en el portafolio — cada uno con capturas de cómo quedó.",
+        "Los trabajos están en el portafolio: cada uno con capturas de cómo quedó.",
       ],
       opciones: [
         { texto: "Ver el portafolio", url: "/portafolio.html" },

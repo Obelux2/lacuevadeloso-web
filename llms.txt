@@ -1,14 +1,18 @@
 # La Cueva del Oso
 
-> Francisco Velásquez hace páginas web y automatiza el trabajo repetitivo de pymes chilenas. Presupuesto cerrado por proyecto, sin mensualidad obligatoria, entrega en días.
+> Francisco Velásquez hace páginas web y agentes que responden a los clientes de pymes chilenas al instante, a cualquier hora. Presupuesto cerrado por proyecto, sin mensualidad obligatoria, entrega en días.
 
-La Cueva del Oso es el estudio unipersonal de Francisco Velásquez, ex líder técnico con 18 años de experiencia en Falabella, Sodimac, Cencosud y Banco de Chile, hoy dedicado a construir sitios web y automatizaciones con IA para pymes chilenas.
+La Cueva del Oso es el estudio unipersonal de Francisco Velásquez, líder técnico con casi 20 años desarrollando software en sistemas de alta demanda de bancos y grandes retails de Chile, hoy dedicado a construir sitios web y agentes de atención con IA para pymes chilenas.
+
+El problema que ataca: las pymes pierden clientes por no alcanzar a responder a tiempo (la consulta del viernes en la noche que se contesta el lunes) y pierden horas contestando siempre las mismas cinco preguntas.
 
 ## Servicios
-- Páginas web nuevas, rediseños y tiendas online (Jumpseller, Shopify).
-- Catálogos de precios que se actualizan solos.
-- Agentes de IA que contestan consultas frecuentes y agendan hora.
-- Automatización de presupuestos, listas de precios y pedidos por WhatsApp.
+- Landing pages de una sola página, orientadas a convertir el visitante en contacto.
+- Páginas web nuevas, rediseños y tiendas online con catálogo, carro y panel de administración.
+- Agentes de WhatsApp que responden en segundos a cualquier hora, agendan hora, toman pedidos y dejan los datos del interesado en una planilla o CRM.
+- Catálogos de precios que se recalculan solos cuando cambian los costos.
+- Automatización de presupuestos y de pedidos que llegan por WhatsApp.
+- Agentes de voz: en construcción, todavía no se ofrecen comercialmente.
 
 ## Páginas
 - [Inicio](https://lacuevadeloso.cl/): servicios, forma de trabajo y contacto.

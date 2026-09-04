@@ -150,7 +150,7 @@
       id: "faq_quien",
       mensaje: [
         "Le dicen Oso. Viene de una familia de panaderos y la amasandería de sus padres fue la primera pyme que digitalizó.",
-        "Antes de eso, 18 años construyendo sistemas para Falabella, Sodimac, Cencosud y Banco de Chile, la mayor parte como líder técnico.",
+        "Antes de eso, casi 20 años construyendo sistemas para bancos y grandes retails, la mayor parte como líder técnico.",
         "Hoy esa experiencia trabaja para pymes que ya funcionan y merecen que se note.",
       ],
       opciones: [

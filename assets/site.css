@@ -134,6 +134,10 @@ nav.site-nav a:hover{ background: var(--button-2); color: var(--text); }
   .site-bar{ flex-wrap: wrap; row-gap: .25rem; }
   .site-nav{ width: 100%; }
   nav.site-nav ul{ flex-wrap: wrap; justify-content: center; }
+  /* Con 6 links envueltos el header ocupa ~160px: demasiado para dejarlo pegado
+     en una pantalla de celular. El bot flotante y los botones del hero ya dan
+     acceso permanente al contacto, así que acá el header se va con el scroll. */
+  header.site{ position: static; }
 }
 
 /* ---------- Botones (píldora) ---------- */

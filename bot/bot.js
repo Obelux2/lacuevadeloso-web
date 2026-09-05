@@ -47,18 +47,52 @@
       "background:var(--accent,#5266eb);color:var(--white,#fff);border:none;" +
       "border-radius:var(--r-pill,32px);padding:.75em 1.4em;cursor:pointer;" +
       "font-family:var(--font,inherit);font-size:var(--fs-body,1rem);font-weight:600;" +
-      "box-shadow:0 4px 16px rgba(0,0,0,.35);}" +
+      "box-shadow:0 4px 16px rgba(0,0,0,.35);" +
+      "transition:transform 160ms var(--ease,cubic-bezier(.16,1,.3,1))," +
+      "opacity 140ms var(--ease,cubic-bezier(.16,1,.3,1))," +
+      "display 140ms allow-discrete;}" +
       ".cueva-bot-flotante:hover{opacity:.9;}" +
+      // Feedback de presion: scale(.97) arrastra el texto del boton, que es
+      // lo que hace que se lea como algo que se hunde.
+      // Asimetrico a proposito: hundir es la respuesta a lo que el usuario
+      // acaba de hacer y tiene que verse ya (100ms); volver es el sistema
+      // soltando y puede ser mas suave (160ms, en la base de arriba).
+      ".cueva-bot-flotante:active{transform:scale(.97);transition-duration:100ms;}" +
       ".cueva-bot-panel{position:fixed;right:20px;bottom:20px;z-index:1500;" +
       "width:min(360px,calc(100vw - 40px));max-height:min(560px,calc(100vh - 40px));" +
       "display:flex;flex-direction:column;overflow:hidden;" +
       "background:var(--card,#1e1e2a);color:var(--text,#ededf3);" +
       "border:1px solid var(--border-hair,rgba(226,227,237,.16));" +
       "border-radius:var(--r-card,12px);box-shadow:0 12px 40px rgba(0,0,0,.45);" +
-      "font-family:var(--font,inherit);}" +
+      "font-family:var(--font,inherit);" +
+      // El panel nace del boton flotante, que vive en la esquina inferior
+      // derecha: por eso el origen ahi y no en el centro. Sin esto el panel
+      // aparece de la nada en vez de salir de lo que el usuario apreto.
+      "transform-origin:bottom right;opacity:1;scale:1;translate:0 0;" +
+      "transition:opacity 260ms var(--ease,cubic-bezier(.16,1,.3,1))," +
+      "scale 260ms var(--ease,cubic-bezier(.16,1,.3,1))," +
+      "translate 260ms var(--ease,cubic-bezier(.16,1,.3,1))," +
+      "display 260ms allow-discrete;}" +
       // El display de autor le gana al [hidden] del navegador: sin esta regla
       // el panel nunca se oculta y queda tapando el boton flotante.
+      // `allow-discrete` arriba hace que ese display:none espere a que
+      // termine la salida, asi el panel se va por donde entro.
       ".cueva-bot-panel[hidden],.cueva-bot-flotante[hidden]{display:none;}" +
+      ".cueva-bot-panel[hidden]{opacity:0;scale:.96;translate:0 8px;}" +
+      ".cueva-bot-flotante[hidden]{opacity:0;transition-delay:0ms;}" +
+      // Sin esto el panel NO anima al entrar: viene de display:none, o sea
+      // de no estar renderizado, y una transicion necesita un estado previo
+      // del cual interpolar. `allow-discrete` arriba solo cubre la salida.
+      "@starting-style{.cueva-bot-panel:not([hidden]){" +
+      "opacity:0;scale:.96;translate:0 8px;}}" +
+      "@starting-style{.cueva-bot-flotante:not([hidden]){opacity:0;}}" +
+      // El boton y el panel viven en el mismo punto de la pantalla. Al cerrar,
+      // el boton espera a que el panel se haya ido casi del todo en vez de
+      // aparecer encima de su salida.
+      // El orden sigue al de `transition` de arriba: transform, opacity,
+      // display. El transform va en 0 porque es el feedback de presion y no
+      // puede esperar a nada.
+      ".cueva-bot-flotante{transition-delay:0ms,180ms,180ms;}" +
       ".cueva-bot-header{display:flex;align-items:center;justify-content:space-between;" +
       "padding:.9em 1em;border-bottom:1px solid var(--border-hair,rgba(226,227,237,.16));" +
       "font-weight:600;}" +
@@ -68,7 +102,12 @@
       ".cueva-bot-mensajes{flex:1;overflow-y:auto;padding:1em;display:flex;" +
       "flex-direction:column;gap:.6em;font-size:var(--fs-body,1rem);}" +
       ".cueva-bot-burbuja{max-width:85%;padding:.6em .9em;border-radius:var(--r-card,12px);" +
-      "line-height:1.4;white-space:pre-line;}" +
+      "line-height:1.4;white-space:pre-line;" +
+      // Corto a proposito: en una conversacion esto se ve muchas veces por
+      // sesion, y a esa frecuencia el movimiento tiene que ser casi invisible.
+      "transition:opacity 180ms var(--ease,cubic-bezier(.16,1,.3,1))," +
+      "translate 180ms var(--ease,cubic-bezier(.16,1,.3,1));}" +
+      "@starting-style{.cueva-bot-burbuja{opacity:0;translate:0 6px;}}" +
       ".cueva-bot-burbuja--bot{align-self:flex-start;background:var(--button-2,#272735);" +
       "color:var(--text,#ededf3);border-bottom-left-radius:4px;}" +
       ".cueva-bot-burbuja--usuario{align-self:flex-end;background:var(--accent,#5266eb);" +
@@ -78,9 +117,17 @@
       ".cueva-bot-opcion{text-align:left;background:var(--button-2,#272735);" +
       "color:var(--text,#ededf3);border:1px solid var(--border-hair,rgba(226,227,237,.16));" +
       "border-radius:var(--r-pill,32px);padding:.55em 1em;cursor:pointer;" +
-      "font-family:inherit;font-size:var(--fs-small,.875rem);}" +
+      "font-family:inherit;font-size:var(--fs-small,.875rem);" +
+      // Las cuatro propiedades que cambia el :hover van juntas: si solo funde
+      // el fondo, el texto y el borde saltan en el primer frame y el cambio
+      // se lee peor que si no animara nada.
+      "transition:transform 160ms var(--ease,cubic-bezier(.16,1,.3,1))," +
+      "background-color 140ms var(--ease,cubic-bezier(.16,1,.3,1))," +
+      "color 140ms var(--ease,cubic-bezier(.16,1,.3,1))," +
+      "border-color 140ms var(--ease,cubic-bezier(.16,1,.3,1));}" +
       ".cueva-bot-opcion:hover{background:var(--accent,#5266eb);color:var(--white,#fff);" +
       "border-color:var(--accent,#5266eb);}" +
+      ".cueva-bot-opcion:active{transform:scale(.97);transition-duration:100ms;}" +
       ".cueva-bot-captura{display:flex;gap:.5em;}" +
       ".cueva-bot-captura input{flex:1;min-width:0;background:var(--canvas,#171721);" +
       "color:var(--text,#ededf3);border:1px solid var(--border-strong,#70707d);" +
@@ -103,8 +150,18 @@
       ".cueva-bot-panel button:focus-visible,.cueva-bot-panel a:focus-visible," +
       ".cueva-bot-panel input:focus-visible,.cueva-bot-flotante:focus-visible{" +
       "outline:2px solid var(--text,#ededf3);outline-offset:2px;}" +
-      "@media (prefers-reduced-motion: reduce){.cueva-bot-panel,.cueva-bot-panel *{" +
-      "transition:none !important;}}";
+      // Movimiento reducido no es cero movimiento: se queda el cruce de
+      // opacidad, que ayuda a entender que algo cambio, y se va todo lo que
+      // se desplaza o escala.
+      "@media (prefers-reduced-motion: reduce){" +
+      ".cueva-bot-panel{scale:1;translate:0 0;" +
+      "transition:opacity 200ms var(--ease,cubic-bezier(.16,1,.3,1))," +
+      "display 200ms allow-discrete;}" +
+      ".cueva-bot-panel[hidden]{scale:1;translate:0 0;}" +
+      ".cueva-bot-burbuja{translate:0 0;transition:opacity 180ms " +
+      "var(--ease,cubic-bezier(.16,1,.3,1));}" +
+      "@starting-style{.cueva-bot-burbuja{translate:0 0;}}" +
+      ".cueva-bot-flotante:active,.cueva-bot-opcion:active{transform:none;}}";
     var estilo = el("style", { id: "cueva-bot-estilos" });
     estilo.textContent = css;
     document.head.appendChild(estilo);

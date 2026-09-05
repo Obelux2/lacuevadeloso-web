@@ -48,6 +48,11 @@
   --fs-body: 1rem;
   --fs-small: .875rem;
   --measure: 60ch;
+
+  /* Habilita animar hacia `auto` (lo usa el acordeón del FAQ). Se hereda a
+     todo el documento, así que vive acá con el resto de lo global y no
+     escondido en la sección que lo estrenó. */
+  interpolate-size: allow-keywords;
 }
 
 /* ---------- Reset ---------- */
@@ -154,7 +159,10 @@ nav.site-nav a:hover{ background: var(--button-2); color: var(--text); }
 }
 .btn svg{ width: 1.2em; height: 1.2em; flex-shrink: 0; }
 .btn-primary{ background: var(--accent); color: var(--white); }
-.btn-primary:hover{ opacity: .9; transform: translateY(-1px); }
+.btn-primary:hover{ opacity: .9; }
+@media (hover: hover) and (pointer: fine){
+  .btn-primary:hover{ transform: translateY(-1px); }
+}
 .btn:active{ transform: scale(.98); }
 .btn-ghost{
   background: transparent;
@@ -219,9 +227,11 @@ nav.site-nav a:hover{ background: var(--button-2); color: var(--text); }
   padding: var(--sp-3);
   transition: transform .25s var(--ease), box-shadow .25s var(--ease);
 }
-.card:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 16px 28px -18px rgba(0,0,0,.45);
+@media (hover: hover) and (pointer: fine){
+  .card:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 16px 28px -18px rgba(0,0,0,.45);
+  }
 }
 
 /* ---------- Principios ---------- */
@@ -264,9 +274,17 @@ nav.site-nav a:hover{ background: var(--button-2); color: var(--text); }
 
 /* ---------- Trabajos ---------- */
 .work-list{ display: grid; grid-template-columns: 1fr; gap: var(--sp-2); }
-.work-item{ display: flex; flex-direction: column; gap: var(--sp-2); overflow: hidden; scroll-margin-top: 5.5rem; }
+/* Recorta con clip-path y no con overflow:hidden a propósito: `overflow`
+   convierte al elemento en scroll container, y entonces el `view()` del
+   parallax de .work-shot se ancla acá —a un contenedor sin recorrido— en vez
+   de al documento, y el efecto queda congelado. clip-path recorta igual. */
+.work-item{ display: flex; flex-direction: column; gap: var(--sp-2); clip-path: inset(0); scroll-margin-top: 5.5rem; }
 .work-shot, .work-pattern{ transition: transform .3s var(--ease); }
-.work-item:hover .work-shot, .work-item:hover .work-pattern{ transform: scale(1.03); }
+/* Gateado a punteros finos: en tactil el tap dispara un :hover falso y la
+   foto se queda escalada hasta que tocas otra cosa. */
+@media (hover: hover) and (pointer: fine){
+  .work-item:hover .work-shot, .work-item:hover .work-pattern{ transform: scale(1.03); }
+}
 .work-shot-link{ display: block; }
 .work-card-link{
   display: flex; flex-direction: column; gap: var(--sp-2);
@@ -368,8 +386,18 @@ footer.site a{ text-decoration: none; }
 footer.site a:hover{ color: var(--text); }
 
 /* ---------- Reveal ---------- */
-.reveal{ opacity: 1; transform: none; transition: opacity .6s var(--ease), transform .6s var(--ease); }
-.reveal.is-hidden{ opacity: 0; transform: translateY(16px); }
+/* Curva propia, no --ease: ese es un ease-out expo que resuelve el 80% del
+   movimiento en el primer cuarto del tiempo. Perfecto para un hover de 200ms
+   y pesimo para una entrada, porque la hace ver instantanea por larga que
+   sea. Este easeOutQuad reparte el recorrido y deja que se vea. */
+.reveal{
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity .8s cubic-bezier(.22,.61,.36,1),
+    transform .8s cubic-bezier(.22,.61,.36,1);
+}
+.reveal.is-hidden{ opacity: 0; transform: translateY(24px); }
 @media (prefers-reduced-motion: reduce){
   .reveal, .reveal.is-hidden{ opacity: 1; transform: none; transition: none; }
   html{ scroll-behavior: auto; }
@@ -378,6 +406,12 @@ footer.site a:hover{ color: var(--text); }
   .card:hover{ transform: none; }
   .work-shot, .work-pattern{ transition: none; }
   .work-item:hover .work-shot, .work-item:hover .work-pattern{ transform: none; }
+  /* Se conserva el cruce de opacidad, que ayuda a entender qué cambió, y se
+     va todo lo que se desplaza o escala. Este es el ÚNICO bloque de
+     movimiento reducido del archivo: lo nuevo se agrega acá. */
+  .lightbox{ transform: none; transition: opacity 200ms var(--ease), display 200ms allow-discrete, overlay 200ms allow-discrete; }
+  @starting-style{ .lightbox[open]{ transform: none; } }
+  .faq-item::details-content{ transition: none; }
 }
 
 /* ---------- FAQ ---------- */
@@ -453,3 +487,76 @@ footer.site a:hover{ color: var(--text); }
 }
 .lightbox-close:hover{ background: var(--border-strong); }
 .lightbox figcaption{ margin-top: var(--sp-2); color: var(--text-muted); text-align: center; }
+
+/* Entrada de la lightbox. Es un modal: no sale de su trigger, se queda
+   centrada y solo escala. `allow-discrete` es lo que deja que display y
+   overlay (top layer) esperen a que termine la transición. */
+.lightbox{
+  opacity: 0;
+  transform: scale(.96);
+  transition:
+    opacity 250ms var(--ease),
+    transform 250ms var(--ease),
+    display 250ms allow-discrete,
+    overlay 250ms allow-discrete;
+}
+.lightbox[open]{ opacity: 1; transform: scale(1); }
+@starting-style{
+  .lightbox[open]{ opacity: 0; transform: scale(.96); }
+}
+.lightbox::backdrop{
+  opacity: 0;
+  transition:
+    opacity 250ms var(--ease),
+    display 250ms allow-discrete,
+    overlay 250ms allow-discrete;
+}
+.lightbox[open]::backdrop{ opacity: 1; }
+@starting-style{
+  .lightbox[open]::backdrop{ opacity: 0; }
+}
+
+/* ---------- FAQ: acordeón ---------- */
+/* `height` es la única propiedad que sirve para un acordeón: no hay
+   equivalente en transform. Cuesta layout en cada frame, así que 220ms
+   y ni un ms más. `interpolate-size` (en :root) es lo que permite animar
+   hacia auto sin medir la altura en JS.
+   Cerrar va más corto que abrir: --ease es un ease-out expo, que recorre
+   casi toda la distancia al principio y arrastra el final. Al abrir eso se
+   siente ágil; al cerrar, a 220ms, se siente como que se queda pegado. */
+.faq-item::details-content{
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition:
+    height 180ms var(--ease),
+    opacity 180ms var(--ease),
+    content-visibility 180ms var(--ease) allow-discrete;
+}
+.faq-item[open]::details-content{
+  height: auto;
+  opacity: 1;
+  transition-duration: 220ms;
+}
+
+/* ---------- Parallax de las fotos de trabajos ---------- */
+/* Ligado al scroll, no a rAF: corre fuera del main thread y no compite con
+   la carga de la página. Usa `translate` (propiedad individual) en vez de
+   `transform` para no pisar el scale(1.03) del hover — se componen.
+   El scale base de 1.06 deja 3% de margen por lado y el recorrido es ±2.5%:
+   la diferencia es lo que evita que el borde asome por redondeo subpíxel.
+   Requiere que ningún ancestro sea scroll container — ver .work-item. */
+@supports (animation-timeline: view()){
+  @media (prefers-reduced-motion: no-preference){
+    .work-shot{
+      scale: 1.06;
+      animation: work-parallax linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+    @keyframes work-parallax{
+      from{ translate: 0 -2.5%; }
+      to{ translate: 0 2.5%; }
+    }
+  }
+}

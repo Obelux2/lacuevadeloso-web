@@ -171,10 +171,10 @@
   function construirDom() {
     var botonFlotante = el("button", {
       type: "button",
-      class: "cueva-bot-flotante",
+      class: "btn btn-primary cueva-bot-demo-trigger",
       "aria-haspopup": "dialog",
-      "aria-label": "Abrir chat con el asistente de La Cueva del Oso",
-      texto: "¿Hablamos?",
+      "aria-label": "Probar chatbot guiado",
+      texto: "Probar chatbot guiado",
     });
     var botonCerrar = el("button", {
       type: "button",
@@ -183,7 +183,7 @@
       texto: "✕",
     });
     var header = el("div", { class: "cueva-bot-header" }, [
-      el("strong", { texto: "Asistente · La Cueva del Oso" }),
+      el("strong", { texto: "Demo · Chatbot guiado" }),
       botonCerrar,
     ]);
     var mensajes = el("div", { class: "cueva-bot-mensajes", "aria-live": "polite" });
@@ -194,12 +194,12 @@
         class: "cueva-bot-panel",
         role: "dialog",
         "aria-modal": "true",
-        "aria-label": "Chat con el asistente de La Cueva del Oso",
+        "aria-label": "Demo de chatbot guiado, sin IA",
         hidden: "hidden",
       },
       [header, mensajes, controles]
     );
-    document.body.appendChild(botonFlotante);
+    document.getElementById("chatbot-demo").appendChild(botonFlotante);
     document.body.appendChild(panel);
     return {
       botonFlotante: botonFlotante,
@@ -397,6 +397,7 @@
   }
 
   function iniciar() {
+    if (!document.getElementById("chatbot-demo")) return;
     inyectarEstilos();
     cargarFlujo(function () {
       iniciarBot(window.FLUJO_BOT);

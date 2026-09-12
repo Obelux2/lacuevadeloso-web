@@ -1,6 +1,6 @@
 # La Cueva del Oso
 
-> Francisco Velásquez hace páginas web y agentes que responden a los clientes de pymes chilenas al instante, a cualquier hora. Presupuesto cerrado por proyecto, sin mensualidad obligatoria, entrega en días.
+> Francisco Velásquez crea páginas web, agentes de WhatsApp con IA y automatizaciones internas para empresas en Chile. El alcance, presupuesto y plazo se acuerdan por proyecto.
 
 La Cueva del Oso es el estudio unipersonal de Francisco Velásquez, líder técnico con casi 20 años desarrollando software en sistemas de alta demanda de bancos y grandes retails de Chile, hoy dedicado a construir sitios web y agentes de atención con IA para pymes chilenas.
 
@@ -9,19 +9,31 @@ El problema que ataca: las pymes pierden clientes por no alcanzar a responder a 
 ## Servicios
 - Landing pages de una sola página, orientadas a convertir el visitante en contacto.
 - Páginas web nuevas, rediseños y tiendas online con catálogo, carro y panel de administración.
-- Agentes de WhatsApp que responden en segundos a cualquier hora, agendan hora, toman pedidos y dejan los datos del interesado en una planilla o CRM.
+- Agentes de WhatsApp con IA para consultas, captación de datos y derivación humana. Las conexiones con agendas, pedidos o CRM se definen y prueban según el proyecto.
+- Compra y configuración de dominios y hosting; instalación en dependencias del cliente según los requisitos de la solución.
+- Instalación o configuración de CRM.
+- Automatizaciones internas de la empresa con IA, según el proceso y las herramientas disponibles.
 - Catálogos de precios que se recalculan solos cuando cambian los costos.
 - Automatización de presupuestos y de pedidos que llegan por WhatsApp.
 - Agentes de voz: en construcción, todavía no se ofrecen comercialmente.
+
+## Páginas de servicios
+- [Sitios web](./servicios/sitios-web.html): alcance, proceso y preguntas frecuentes del servicio.
+- [Agentes de WhatsApp](./servicios/agentes-whatsapp.html): alcance, proceso y preguntas frecuentes del servicio.
+- [Automatizaciones](./servicios/automatizaciones.html): alcance, proceso y preguntas frecuentes del servicio.
 
 ## Páginas
 - [Inicio](./): servicios, forma de trabajo y contacto.
 - [Portafolio](./portafolio.html): todos los proyectos realizados.
 - [Lista de Precios (Template)](./proyectos/lista-de-precios.html): catálogo de precios que se recalcula solo, con IA que lee facturas.
-- [La Consulta de la Sofi](./proyectos/la-consulta-de-la-sofi.html): sitio para una terapeuta floral y de sanación energética.
-- [Tienda La Cueva del Oso 3D](./proyectos/tienda-3d.html): tienda online de piezas impresas en 3D.
+- [La Consulta de la Sofi](./proyectos/la-consulta-de-la-sofi.html): sitio reconstruido desde cero, con sección de cursos y charlas; agenda en Encuadrados. La página del primer curso y el agente de WhatsApp están en desarrollo.
+- [Tienda La Cueva del Oso 3D](./proyectos/tienda-3d.html): vitrina de impresiones 3D a medida, con herramienta de costeo y carro de cotización por WhatsApp.
 - [Veterinaria Jessi](./proyectos/veterinaria-jessi.html): sistema de gestión clínica veterinaria.
 
 ## Contacto
 - WhatsApp: +56 9 5714 1786
 - Correo: francisco.velasquez@lacuevadeloso.cl
+
+## Demostración y contacto
+- La demo de chatbot guiado está en la página de agentes de WhatsApp. Usa respuestas predefinidas y no es un agente con IA.
+- El botón flotante abre WhatsApp para conversar directamente con Francisco.

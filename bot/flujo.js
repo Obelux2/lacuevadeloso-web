@@ -21,8 +21,8 @@
     {
       id: "inicio",
       mensaje: [
-        "Hola 👋 Soy el asistente de La Cueva del Oso.",
-        "Y sí, soy un bot, de los que Francisco construye. Cuéntame qué te trae por acá.",
+        "Hola 👋 Esta es una demo de chatbot guiado de La Cueva del Oso.",
+        "Sigo opciones y respuestas predefinidas, sin IA. Puedes probar el recorrido con datos ficticios. Nada se envía por WhatsApp hasta que tú decidas hacerlo.",
       ],
       opciones: [
         { texto: "Quiero cotizar algo", siguiente: "necesidad" },

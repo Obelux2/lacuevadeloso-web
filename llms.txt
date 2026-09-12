@@ -15,12 +15,12 @@ El problema que ataca: las pymes pierden clientes por no alcanzar a responder a 
 - Agentes de voz: en construcción, todavía no se ofrecen comercialmente.
 
 ## Páginas
-- [Inicio](https://lacuevadeloso.cl/): servicios, forma de trabajo y contacto.
-- [Portafolio](https://lacuevadeloso.cl/portafolio.html): todos los proyectos realizados.
-- [Lista de Precios (Template)](https://lacuevadeloso.cl/proyectos/lista-de-precios.html): catálogo de precios que se recalcula solo, con IA que lee facturas.
-- [La Consulta de la Sofi](https://lacuevadeloso.cl/proyectos/la-consulta-de-la-sofi.html): sitio para una terapeuta floral y de sanación energética.
-- [Tienda La Cueva del Oso 3D](https://lacuevadeloso.cl/proyectos/tienda-3d.html): tienda online de piezas impresas en 3D.
-- [Veterinaria Jessi](https://lacuevadeloso.cl/proyectos/veterinaria-jessi.html): sistema de gestión clínica veterinaria.
+- [Inicio](./): servicios, forma de trabajo y contacto.
+- [Portafolio](./portafolio.html): todos los proyectos realizados.
+- [Lista de Precios (Template)](./proyectos/lista-de-precios.html): catálogo de precios que se recalcula solo, con IA que lee facturas.
+- [La Consulta de la Sofi](./proyectos/la-consulta-de-la-sofi.html): sitio para una terapeuta floral y de sanación energética.
+- [Tienda La Cueva del Oso 3D](./proyectos/tienda-3d.html): tienda online de piezas impresas en 3D.
+- [Veterinaria Jessi](./proyectos/veterinaria-jessi.html): sistema de gestión clínica veterinaria.
 
 ## Contacto
 - WhatsApp: +56 9 5714 1786

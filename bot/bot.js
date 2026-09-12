@@ -12,7 +12,8 @@
   "use strict";
 
   var WHATSAPP_NUMERO = "56957141786";
-  var RUTA_FLUJO = "/bot/flujo.js";
+  var RUTA_FLUJO = new URL("flujo.js", document.currentScript.src).href;
+  var BASE_SITIO = new URL("../", document.currentScript.src).href;
 
   function el(tag, attrs, hijos) {
     var nodo = document.createElement(tag);
@@ -277,7 +278,7 @@
       if (resultado.url) {
         var esExterna = /^https?:\/\//.test(resultado.url);
         if (esExterna) window.open(resultado.url, "_blank", "noopener");
-        else window.location.assign(resultado.url);
+        else window.location.assign(new URL(resultado.url, BASE_SITIO).href);
         return;
       }
       mostrarNodo(resultado.nodo);

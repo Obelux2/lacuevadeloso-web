@@ -154,7 +154,7 @@
         "Hoy esa experiencia trabaja para pymes que ya funcionan y merecen que se note.",
       ],
       opciones: [
-        { texto: "Ver trabajos", url: "/portafolio.html" },
+        { texto: "Ver trabajos", url: "portafolio.html" },
         { texto: "Quiero cotizar", siguiente: "necesidad" },
       ],
     },
@@ -177,7 +177,7 @@
         "Los trabajos están en el portafolio: cada uno con capturas de cómo quedó.",
       ],
       opciones: [
-        { texto: "Ver el portafolio", url: "/portafolio.html" },
+        { texto: "Ver el portafolio", url: "portafolio.html" },
         { texto: "Mejor pregunto algo", siguiente: "faq" },
       ],
     },

@@ -22,13 +22,6 @@
     revealObserver?.disconnect();
   });
 
-  const contact = document.querySelector('.contact');
-  if (contact && 'IntersectionObserver' in window) {
-    new IntersectionObserver(entries => {
-      entries.forEach(entry => entry.target.classList.toggle('in-view', entry.isIntersecting));
-    }).observe(contact);
-  }
-
   function setupDemo(stage) {
     const replay = document.querySelector('.replay');
     const messages = [...stage.querySelectorAll('[data-message]')];

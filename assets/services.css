@@ -11,7 +11,7 @@
 .service-example{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;background:var(--surface)}
 .service-example h2{margin:20px 0}
 .service-example img{width:100%;height:auto;max-height:420px;object-fit:contain}
-.service-page .section .eyebrow{font-size:10px;color:var(--accent)}
+.service-page .section .eyebrow{font-size:12px;color:var(--accent)}
 .service-flow{display:flex;flex-direction:column;gap:16px;align-items:center;text-align:center;padding:32px;border:1px solid var(--line)}
 .service-flow span:nth-child(even){color:var(--accent)}
 .service-page .process li>p{max-width:none;font-size:14px}
